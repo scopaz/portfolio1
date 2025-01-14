@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassine Farid - Fullstack Software Engineer</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --card-background: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .project-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+        }
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .skill-card {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+        }
+        .experience-item {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .experience-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .experience-date {
+            color: #666;
+            font-style: italic;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 4px solid var(--card-background);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        section h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Add smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="profile-photo.jpg" alt="Yassine Farid" class="profile-photo">
+            <h1>Yassine Farid</h1>
+            <p>Fullstack Software Engineer</p>
+        </header>
+
+        <section>
+            <h2>Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">.NET Core / ASP.NET</div>
+                <div class="skill-card">C#</div>
+                <div class="skill-card">SQL Server / Oracle</div>
+                <div class="skill-card">Azure DevOps</div>
+                <div class="skill-card">Agile Methodologies</div>
+                <div class="skill-card">REST APIs</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Backend Developer at Bouygues Telecom</h3>
+                <p class="experience-date">Apr 2024 - Present</p>
+                <ul>
+                    <li>Development and implementation of REST APIs with C# .NET and Swagger, accessible internally and externally</li>
+                    <li>Migration of solutions from C# 3.5 to C# 8.0 to benefit from the latest features</li>
+                    <li>Creation and execution of over 120 unit tests, ensuring complete coverage and code quality</li>
+                    <li>Performance optimization and cost reduction for APIs</li>
+                    <li>Integration of automated CI/CD pipelines to accelerate development cycles and improve productivity</li>
+                    <li>Mentoring on standards and best practices in C# .NET</li>
+                    <li>Technical proposals to adapt innovative solutions, particularly in the context of microservices using Redis RAC</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Backend Developer at Orange Business</h3>
+                <p class="experience-date">Apr 2022 - Mar 2024</p>
+                <ul>
+                    <li>Full Stack development in an agile environment with Azure DevOps, ensuring quality and client satisfaction</li>
+                    <li>Corrective and evolutionary maintenance of solutions</li>
+                    <li>Collaboration with the team to ensure deadlines are met</li>
+                    <li>Organization of work by prioritizing tasks according to client requirements and impact on business value</li>
+                    <li>Contribution to process automation and workflow optimization</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>IT Consultant at Accentica</h3>
+                <p class="experience-date">Mar 2020 - Jul 2022</p>
+                <ul>
+                    <li>Full Stack Black-end .NET development and Azure DevOps integration</li>
+                    <li>Corrective and evolutionary maintenance of projects, responding to specific client needs</li>
+                    <li>Development and integration of APIs, particularly for Web and mobile applications, with complete technical documentation</li>
+                    <li>Analysis of client needs, drafting specifications and technical documentation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="experience-item">
+                <h3>Master's in Big Data Engineering</h3>
+                <p>Université Mohammed V - Rabat, 2019</p>
+            </div>
+            <div class="experience-item">
+                <h3>Bachelor's in Computer Science</h3>
+                <p>Université Mohammed V - Rabat, 2017</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contact Me</h2>
+            <p>Email: farid.yassine123@gmail.com</p>
+            <p>Phone: +212 626245557</p>
+            <!-- Add other contact details -->
+        </section>
+    </div>
+</body>
+</html>
