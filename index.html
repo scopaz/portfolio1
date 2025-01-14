@@ -10,18 +10,161 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #2c3e50;
-            --accent-color: #764ba2;
+            /* Light theme - keeping existing colors */
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --card-background: #ffffff;
             --text-color: #2c3e50;
-            --light-bg: #f8f9fa;
+            --text-secondary: #666666;
+            --link-color: #3498db;
+            --border-color: #e1e1e1;
         }
 
+        /* Improved dark theme with softer colors */
+        [data-theme="dark"] {
+            --primary-color: #8b5cf6;      /* Soft purple */
+            --secondary-color: #60a5fa;    /* Soft blue */
+            --accent-color: #f472b6;       /* Soft pink */
+            --background-color: #0f172a;   /* Deep navy */
+            --card-background: #1e293b;    /* Darker navy */
+            --text-color: #94a3b8;         /* Soft gray-blue */
+            --text-secondary: #64748b;     /* Muted gray-blue */
+            --link-color: #38bdf8;         /* Bright blue */
+            --border-color: #334155;       /* Dark gray-blue */
+        }
+
+        /* Improved dark mode specific styles */
+        [data-theme="dark"] .header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .project-card,
+        [data-theme="dark"] .skill-card,
+        [data-theme="dark"] .experience-item {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .skill-card:hover {
+            background: linear-gradient(135deg, #2d3a54, #1e293b);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="dark"] section h2 {
+            color: #8b5cf6;
+            border-bottom: 2px solid #334155;
+        }
+
+        [data-theme="dark"] a:hover {
+            color: #f472b6;
+        }
+
+        /* Improved dark mode selection color */
+        [data-theme="dark"] ::selection {
+            background-color: #8b5cf6;
+            color: #0f172a;
+        }
+
+        /* Improved text and content styles */
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.8;
             color: var(--text-color);
-            overflow-x: hidden;
+            background-color: var(--background-color);
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: linear-gradient(135deg, 
+                var(--primary-color), 
+                var(--secondary-color));
+            color: var(--background-color);
+        }
+
+        .project-card, .skill-card, .experience-item {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .skill-card:hover {
+            background: linear-gradient(135deg, 
+                var(--secondary-color), 
+                var(--primary-color));
+            color: var(--background-color);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .experience-item h3 {
+            color: var(--primary-color);
+        }
+
+        .experience-item p {
+            color: var(--text-secondary);
+        }
+
+        /* Improved theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: var(--card-background);
+            color: var(--text-color);
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(360deg);
+            background: var(--primary-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Add subtle text shadow for better readability in dark mode */
+        [data-theme="dark"] .header h1,
+        [data-theme="dark"] .header h2 {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Improve code blocks if you have any */
+        code {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        /* Improve selection color */
+        ::selection {
+            background-color: var(--primary-color);
+            color: var(--background-color);
         }
 
         /* Navbar Styles */
@@ -225,9 +368,196 @@
             transform: translateY(-3px);
             background: var(--primary-color);
         }
+
+        /* Experience section specific styles */
+        #experience .experience-item {
+            background-color: #1e293b;  /* Dark navy background */
+            color: #94a3b8;            /* Light text color */
+            border: 1px solid #334155;  /* Dark border */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #experience .experience-item:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;     /* Purple border on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #experience h3 {
+            color: #8b5cf6;            /* Purple headers */
+            margin-bottom: 10px;
+        }
+
+        #experience .company {
+            color: #60a5fa;            /* Blue company name */
+            font-weight: 500;
+        }
+
+        #experience .date {
+            color: #64748b;            /* Muted date text */
+            font-size: 0.9rem;
+        }
+
+        #experience ul li {
+            color: #94a3b8;            /* List item text color */
+            margin-bottom: 8px;
+        }
+
+        /* Formation section matching styles */
+        #formation .formation-item {
+            background-color: #1e293b;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #formation .formation-item:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #formation h3 {
+            color: #8b5cf6;
+        }
+
+        #formation .school {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        #formation .date {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Unified card styling for projects, experience, and formation */
+        .project-card,
+        .experience-item,
+        .formation-item {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .project-card,
+        [data-theme="dark"] .experience-item,
+        [data-theme="dark"] .formation-item {
+            background-color: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover,
+        .experience-item:hover,
+        .formation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        /* Unified headings style */
+        .project-card h3,
+        .experience-item h3,
+        .formation-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Unified metadata style (dates, company, school) */
+        .project-card .meta,
+        .experience-item .date,
+        .experience-item .company,
+        .formation-item .date,
+        .formation-item .school {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Dark mode specific text colors */
+        [data-theme="dark"] .project-card h3,
+        [data-theme="dark"] .experience-item h3,
+        [data-theme="dark"] .formation-item h3 {
+            color: #8b5cf6;  /* Soft purple */
+        }
+
+        [data-theme="dark"] .project-card p,
+        [data-theme="dark"] .experience-item p,
+        [data-theme="dark"] .formation-item p {
+            color: #94a3b8;  /* Soft gray-blue */
+        }
+
+        [data-theme="dark"] .project-card .meta,
+        [data-theme="dark"] .experience-item .date,
+        [data-theme="dark"] .experience-item .company,
+        [data-theme="dark"] .formation-item .date,
+        [data-theme="dark"] .formation-item .school {
+            color: #64748b;  /* Muted gray-blue */
+        }
+
+        /* Timeline styling for dark mode */
+        .timeline-item {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .timeline-item {
+            background-color: #1e293b;      /* Dark navy background */
+            border-color: #334155;          /* Dark border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .timeline-item:hover {
+            transform: translateY(-3px);
+            border-color: #8b5cf6;          /* Purple border on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Timeline content styling for dark mode */
+        [data-theme="dark"] .timeline-item h3 {
+            color: #8b5cf6;                 /* Purple headers */
+        }
+
+        [data-theme="dark"] .timeline-item p {
+            color: #94a3b8;                 /* Light text */
+        }
+
+        [data-theme="dark"] .timeline-item .date {
+            color: #64748b;                 /* Muted date text */
+        }
+
+        /* Timeline connector styling for dark mode */
+        [data-theme="dark"] .timeline-item::before {
+            background-color: #334155;      /* Dark connector line */
+        }
+
+        [data-theme="dark"] .timeline-item::after {
+            background-color: #8b5cf6;      /* Purple dot */
+            border: 3px solid #1e293b;
+        }
     </style>
 </head>
 <body>
+    <!-- Add this button right after the body tag -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        🌓
+    </button>
+
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
 
@@ -485,6 +815,28 @@
                 });
             });
         });
+
+        function toggleTheme() {
+            const body = document.documentElement;
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        // Check system preference on first visit
+        if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
     </script>
 </body>
 </html>
